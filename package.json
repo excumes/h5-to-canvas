@@ -1,5 +1,5 @@
 {
-  "name": "spritejsStudy",
+  "name": "h5-to-canvas",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -17,6 +17,7 @@
     "axios": "^0.19.2",
     "babel-loader": "^8.0.0-beta.0",
     "build": "^0.1.4",
+    "canvas2video": "^1.1.0",
     "cheerio": "^1.0.0-rc.3",
     "lodash": "^4.17.19",
     "spritejs": "^3.7.22"

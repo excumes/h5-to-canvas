@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <div id="adaptive"></div>
-    <script src="./main.js"></script>
+  <div id="adaptive"></div>
+
+  <button>开始</button>
+  <div id="videoContainer" style="display: none;">
+    <h2>视频</h2>
+    <video width="320" height="480" controls="true" autoplay="true" id="video"></video>
+  </div>
+  <script src="https://unpkg.com/canvas2video/dist/canvas2video.js"></script>
+  <script src="./main.js"></script>
 </body>
+
 </html>

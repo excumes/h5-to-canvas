@@ -4,3 +4,7 @@
     height: 0;
     padding-bottom: 480px;
 }
+#container {
+  width: 320px;
+  height: 480px;
+}
