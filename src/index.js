@@ -20,10 +20,8 @@ async function getScene() {
 
 async function draw(pageInfo) {
   console.log(pageInfo);
-  // const bgImg = pageInfo.bgImg.slice(pageInfo.bgImg.indexOf("h"), pageInfo.bgImg.indexOf('")'))
   const bgImg = pageInfo.bgImg.replace(/url[("]|[")]/g, "")
-
-
+  // 一组是一页课件
   const group = new Group();
   group.attr({
     anchor: [0, 0],
@@ -40,7 +38,7 @@ async function draw(pageInfo) {
     size: [320, 480]
   });
   group.append(bgImgSprite);
-  await group.transition(0.5, "ease").attr({
+  group.transition(0.5, "ease").attr({
     pos: [0, 0]
   })
 
@@ -49,19 +47,28 @@ async function draw(pageInfo) {
       const width = parseInt(item.css.width),
         height = parseInt(item.css.height),
         x = parseInt(item.css.left),
-        y = parseInt(item.css.top)
+        y = parseInt(item.css.top) + 8;
       const oCss = analyzeTxetDom(item.content);
       const label = new Label({
         ...oCss,
         width,
         height,
-        x,
-        y
+        pos: [x, y]
       });
       group.append(label);
     }
     if (item.type == 2) { //图片
-
+      const width = parseInt(item.css.width),
+        height = parseInt(item.css.height),
+        x = parseInt(item.css.left),
+        y = parseInt(item.css.top)
+      const imgSprite = new Sprite({
+        width,
+        height,
+        pos: [x, y],
+        texture: item.url
+      });
+      group.append(imgSprite);
     }
   })
 }
@@ -72,10 +79,12 @@ async function draw(pageInfo) {
  */
 function analyzeTxetDom(html) {
   const $ = cheerio.load(html);
+  // 字号
+  const fontSizeMap = [12, 13, 16, 18, 24, 32, 48]
   return {
-    fontSize: parseInt($("p").css('fontSize')) || 14,
+    fontSize: fontSizeMap[$("font").attr('size')],
     text: $("p").text(),
-    textAlign: $("p").css("textAlign"),
+    textAlign: $("p").css("text-align"),
     lineHeight: $(".txtFilterContent").css("lineHeight"),
     fontWeight: $("b").length === 0 ? "normal" : "bold",
     fillColor: $("font").attr("color")
