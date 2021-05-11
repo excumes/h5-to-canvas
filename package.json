@@ -19,7 +19,7 @@
     "build": "^0.1.4",
     "canvas2video": "^1.1.0",
     "cheerio": "^1.0.0-rc.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "spritejs": "^3.7.22"
   },
   "devDependencies": {
